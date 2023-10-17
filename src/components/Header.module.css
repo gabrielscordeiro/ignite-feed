@@ -1,4 +1,10 @@
 .header {
-    background: #333;
-    height: 80px;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background: var(--gray-800);
+}
+
+.header img {
+    height: 32px;
 }
