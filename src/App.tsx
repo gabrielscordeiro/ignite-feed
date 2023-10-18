@@ -1,3 +1,4 @@
+import { Post } from "./components/post/Post.tsx";
 import { Header } from "./components/header/Header.tsx";
 import { Sidebar } from "./components/sidebar/Sidebar.tsx";
 
@@ -12,7 +13,7 @@ function App() {
             <div className={styles.wrapper}>
                 <Sidebar />
                 <main>
-
+                    <Post />
                 </main>
             </div>
         </>
