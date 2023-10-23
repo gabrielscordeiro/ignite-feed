@@ -1,4 +1,5 @@
 import styles from './Post.module.css'
+import { Comment } from "../comment/Comment.tsx";
 
 export const Post = () => {
     return (
@@ -51,6 +52,10 @@ export const Post = () => {
                     </button>
                 </footer>
             </form>
+
+            <div className={styles.commentList}>
+                <Comment />
+            </div>
         </article>
     )
 }
