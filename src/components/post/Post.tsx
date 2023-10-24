@@ -2,17 +2,35 @@ import styles from './Post.module.css'
 import { Comment } from "../comment/Comment.tsx";
 import { Avatar } from "../avatar/Avatar.tsx";
 
-export const Post = () => {
+interface PostProps {
+    author: {
+        avatarUrl: string
+        name: string
+        role: string
+    }
+    publishedAt: Date
+    content: {
+      type: string,
+      content: string
+    }[]
+
+}
+
+export const Post = ({
+    author,
+    publishedAt,
+    content
+}: PostProps) => {
     return (
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
                     <Avatar
-                        src="https://github.com/gabrielscordeiro.png"
+                        src={author.avatarUrl}
                     />
                     <div className={styles.authorInfo}>
-                        <strong>Gabriel S. Cordeiro</strong>
-                        <span>Frontend Coordinator</span>
+                        <strong>{author.name}</strong>
+                        <span>{author.role}</span>
                     </div>
                 </div>
 

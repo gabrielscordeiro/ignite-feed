@@ -3,6 +3,7 @@ import { Header } from "./components/header/Header.tsx";
 import { Sidebar } from "./components/sidebar/Sidebar.tsx";
 
 import styles from './App.module.css'
+import { posts } from "./utils/posts.ts";
 
 function App() {
 
@@ -13,9 +14,14 @@ function App() {
             <div className={styles.wrapper}>
                 <Sidebar />
                 <main>
-                    <Post />
-                    <Post />
-                    <Post />
+                    {posts.map((post) => (
+                        <Post
+                            key={post.id}
+                            publishedAt={post.publishedAt}
+                            content={post.content}
+                            author={post.author}
+                        />
+                    ))}
                 </main>
             </div>
         </>
