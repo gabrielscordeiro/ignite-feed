@@ -11,12 +11,11 @@ export const Comment = () => {
                     <header>
                         <div className={styles.authorAndTime}>
                             <strong>Gabriel S. Cordeiro</strong>
-                            <time title="17 de outubro às 22:15h" dateTime="2023-10-17 22:15:30">Cerca de 1h atrás
-                            </time>
+                            <time title="17 de outubro às 22:15h" dateTime="2023-10-17 22:15:30">Cerca de 1h atrás</time>
                         </div>
 
                         <button title="Deletar comentário">
-                            <Trash size={20}/>
+                            <Trash size={24}/>
                         </button>
                     </header>
                     <p>
