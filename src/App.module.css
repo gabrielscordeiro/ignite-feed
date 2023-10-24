@@ -2,9 +2,20 @@
     display: grid;
     grid-template-columns: 256px 1fr;
     align-items: flex-start;
-    gap: 32px;
-    max-width: 1120px;
-    margin: 32px auto;
-    padding: 0 16px;
 
+    gap: 2rem;
+    max-width: 1120px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+
+}
+
+@media(max-width: 768px) {
+    html {
+        font-size: 87.5%;
+    }
+
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
 }
