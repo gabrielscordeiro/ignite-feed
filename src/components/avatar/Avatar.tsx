@@ -12,7 +12,7 @@ export const Avatar = ({
         <div>
             <img
                 className={hasBorder ? styles.avatarWithBorder: styles.avatar}
-                src="https://github.com/gabrielscordeiro.png" alt={src}
+                src={src}
             />
         </div>
     )
