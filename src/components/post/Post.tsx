@@ -1,13 +1,13 @@
 import styles from './Post.module.css'
 import { Comment } from "../comment/Comment.tsx";
+import { Avatar } from "../avatar/Avatar.tsx";
 
 export const Post = () => {
     return (
         <article className={styles.post}>
             <header>
                 <div className={styles.author}>
-                    <img
-                        className={styles.avatar}
+                    <Avatar
                         src="https://github.com/gabrielscordeiro.png"
                     />
                     <div className={styles.authorInfo}>
