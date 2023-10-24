@@ -6,7 +6,8 @@ import { Avatar } from "../avatar/Avatar.tsx";
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
-interface PostProps {
+export interface PostProps {
+    id?: string
     author: {
         avatarUrl: string
         name: string
