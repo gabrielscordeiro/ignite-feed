@@ -2,17 +2,24 @@ import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from "@phosphor-icons/react";
 import { Avatar } from "../avatar/Avatar.tsx";
 
-export const Comment = () => {
+interface CommentProps {
+    content: string
+}
+
+export const Comment = ({
+    content
+}: CommentProps) => {
     return (
         <div className={styles.comment}>
-            <Avatar hasBorder={false} src="https://github.com/gabrielscordeiro.png" />
+            <Avatar hasBorder={false} src="https://github.com/gabrielscordeiro.png"/>
 
             <div className={styles.commentBox}>
                 <div className={styles.commentContent}>
                     <header>
                         <div className={styles.authorAndTime}>
                             <strong>Gabriel S. Cordeiro</strong>
-                            <time title="17 de outubro às 22:15h" dateTime="2023-10-17 22:15:30">Cerca de 1h atrás</time>
+                            <time title="17 de outubro às 22:15h" dateTime="2023-10-17 22:15:30">Cerca de 1h atrás
+                            </time>
                         </div>
 
                         <button title="Deletar comentário">
@@ -20,13 +27,13 @@ export const Comment = () => {
                         </button>
                     </header>
                     <p>
-                        Muito bom Devon, parabéns!!
+                        {content}
                     </p>
                 </div>
 
                 <footer>
                     <button>
-                        <ThumbsUp />
+                        <ThumbsUp/>
                         Aplaudir <span>20</span>
                     </button>
                 </footer>
