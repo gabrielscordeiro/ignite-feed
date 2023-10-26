@@ -1,11 +1,14 @@
-import styles from './Post.module.css'
+import { useState } from "react";
+import { faker } from "@faker-js/faker";
+
+import ptBR from 'date-fns/locale/pt-BR'
+
+import { format, formatDistanceToNow } from 'date-fns'
 import { Comment } from "../comment/Comment.tsx";
 import { Avatar } from "../avatar/Avatar.tsx";
 
+import styles from './Post.module.css'
 
-import { format, formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
-import { useState } from "react";
 
 export interface PostProps {
     id?: string
@@ -54,6 +57,14 @@ export const Post = ({
         setNewCommentText('')
     }
 
+    function deleteComment(commentToDelete: string) {
+        const commentsWithoutDeletedOne = comments.filter(comment => {
+            return comment !== commentToDelete;
+        })
+
+        setComments(commentsWithoutDeletedOne);
+    }
+
     return (
         <article className={styles.post}>
             <header>
@@ -75,9 +86,9 @@ export const Post = ({
             <div className={styles.content}>
                 {content.map((line) => {
                     if (line.type === 'paragraph') {
-                        return <p>{line.content}</p>
+                        return <p key={faker.string.nanoid()}>{line.content}</p>
                     } else if (line.type === 'link') {
-                        return <p><a href="#">{line.content}</a></p>
+                        return <p key={faker.string.nanoid()}><a href="#">{line.content}</a></p>
                     }
                 })}
             </div>
@@ -101,7 +112,11 @@ export const Post = ({
 
             <div className={styles.commentList}>
                 {comments.map((comment) => (
-                    <Comment content={comment}/>
+                    <Comment
+                        key={faker.string.nanoid()}
+                        content={comment}
+                        onDeleteComment={deleteComment}
+                    />
                 ))}
             </div>
         </article>

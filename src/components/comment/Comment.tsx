@@ -4,11 +4,18 @@ import { Avatar } from "../avatar/Avatar.tsx";
 
 interface CommentProps {
     content: string
+    onDeleteComment: (comment: string) => void
 }
 
 export const Comment = ({
-    content
+    content,
+    onDeleteComment
 }: CommentProps) => {
+
+    function handleDeleteComment() {
+        onDeleteComment(content)
+    }
+
     return (
         <div className={styles.comment}>
             <Avatar hasBorder={false} src="https://github.com/gabrielscordeiro.png"/>
@@ -22,7 +29,10 @@ export const Comment = ({
                             </time>
                         </div>
 
-                        <button title="Deletar comentário">
+                        <button
+                            onClick={handleDeleteComment}
+                            title="Deletar comentário"
+                        >
                             <Trash size={24}/>
                         </button>
                     </header>
