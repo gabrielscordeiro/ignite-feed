@@ -7,8 +7,9 @@ import { format, formatDistanceToNow } from 'date-fns'
 import { Comment } from "../comment/Comment.tsx";
 import { Avatar } from "../avatar/Avatar.tsx";
 
-import styles from './Post.module.css'
+import { ChangeEvent, FormEvent, InvalidEvent } from "react";
 
+import styles from './Post.module.css'
 
 export interface PostProps {
     id?: string
@@ -42,19 +43,21 @@ export const Post = ({
         addSuffix: true
     })
 
-    function handleNewCommentChange()
-    {
-        //@ts-expect-error
+    function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
+        event.target.setCustomValidity('')
         setNewCommentText(event.target.value)
     }
 
-    function handleCreateNewComment() {
-        //@ts-ignore
+    function handleCreateNewComment(event: FormEvent) {
         event.preventDefault();
 
         setComments([...comments, newCommentText])
 
         setNewCommentText('')
+    }
+
+    function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
+        event.target.setCustomValidity('Esse campo é obrigatório!')
     }
 
     function deleteComment(commentToDelete: string) {
@@ -64,6 +67,8 @@ export const Post = ({
 
         setComments(commentsWithoutDeletedOne);
     }
+
+    const isNewCommentEmpty = newCommentText.length === 0
 
     return (
         <article className={styles.post}>
@@ -101,10 +106,12 @@ export const Post = ({
                     placeholder="Deixe um comentário"
                     value={newCommentText}
                     onChange={handleNewCommentChange}
+                    onInvalid={handleNewCommentInvalid}
+                    required
                 />
 
                 <footer>
-                    <button type="submit">
+                    <button type="submit" disabled={isNewCommentEmpty}>
                         Publicar
                     </button>
                 </footer>
